@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator</title>
+    <link rel="stylesheet" href="file.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <form id="cvForm">
+            <!-- Personal Information -->
+            <div class="form-group">
+                <label for="nameField">Full Name</label>
+                <input type="text" class="form-control" id="nameField" placeholder="Enter full name">
+            </div>
+            <div class="form-group">
+                <label for="contactField">Contact Number</label>
+                <input type="text" class="form-control" id="contactField" placeholder="Enter contact number">
+            </div>
+            <div class="form-group">
+                <label for="emailField">Email Address</label>
+                <input type="email" class="form-control" id="emailField" placeholder="Enter email address">
+            </div>
+            <div class="form-group">
+                <label for="githubField">GitHub Profile</label>
+                <input type="url" class="form-control" id="githubField" placeholder="Enter GitHub profile URL">
+            </div>
+            <div class="form-group">
+                <label for="linkedinField">LinkedIn Profile</label>
+                <input type="url" class="form-control" id="linkedinField" placeholder="Enter LinkedIn profile URL">
+            </div>
+            <div class="form-group">
+                <label for="imgField">Profile Image</label>
+                <input type="file" class="form-control-file" id="imgField">
+            </div>
+            <div class="form-group">
+                <label for="objectiveField">About Me</label>
+                <textarea class="form-control" id="objectiveField" rows="3" placeholder="Enter about me"></textarea>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="form-group">
+                <label for="skillsField">Skills</label>
+                <div id="skillsContainer">
+                    <ul id="skillsList"></ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="text" class="form-control mr-2" id="skillsField" placeholder="Enter skill">
+                    <input type="number" class="form-control mr-2 skillPercent" min="0" max="100" placeholder="%" style="width: 70px;">
+                    <button type="button" class="btn btn-primary ml-2" onclick="addSkill()">Add Skill</button>
+                </div>
+            </div>
+
+            <!-- Soft Skills Section -->
+            <div class="form-group">
+                <label for="softskillsField">Soft Skills</label>
+                <div id="softskillsContainer">
+                    <ul id="softskillsList"></ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="text" class="form-control mr-2" id="softskillsField" placeholder="Enter soft skill">
+                    <input type="number" class="form-control mr-2 softskillPercent" min="0" max="100" placeholder="%" style="width: 70px;">
+                    <button type="button" class="btn btn-primary ml-2" onclick="addSoftSkill()">Add Soft Skill</button>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="form-group">
+                <label for="educationField">Education</label>
+                <div id="educationContainer">
+                    <ul id="educationList"></ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <textarea class="form-control mr-2 educationField" placeholder="Enter education details"></textarea>
+                    <input type="date" class="form-control mr-2 educationStartDateField">
+                    <input type="date" class="form-control educationEndDateField">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addEducation()">Add Education</button>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="form-group">
+                <label for="projectsField">Projects</label>
+                <div id="projectsContainer">
+                    <ul id="projectsList"></ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <textarea class="form-control mr-2 projectsField" placeholder="Enter project details"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addProject()">Add Project</button>
+            </div>
+
+            <!-- Certifications Section -->
+            <div class="form-group">
+                <label for="certificationsField">Certifications</label>
+                <div id="certificationsContainer">
+                    <ul id="certificationsList"></ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <textarea class="form-control mr-2 certificationsField" placeholder="Enter certification details"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addCertification()">Add Certification</button>
+            </div>
+
+            <!-- Achievements Section -->
+            <div class="form-group">
+                <label for="achievementsField">Achievements</label>
+                <div id="achievementsContainer">
+                    <ul id="achievementsList"></ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <textarea class="form-control mr-2 achievementsField" placeholder="Enter achievement details"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addAchievement()">Add Achievement</button>
+            </div>
+
+            <!-- Hobbies Section -->
+            <div class="form-group">
+                <label for="hobbiesField">Hobbies</label>
+                <div id="hobbiesContainer">
+                    <ul id="hobbiesList"></ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="text" class="form-control mr-2 hobbiesField" placeholder="Enter hobby details">
+                    <input type="text" class="form-control mr-2 hobbiesIcon" placeholder="Enter hobby icon (material icon name)">
+                    <button type="button" class="btn btn-primary ml-2" onclick="addHobby()">Add Hobby</button>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-success">Generate CV</button>
+            
+        </form>
+
+        <!-- CV Preview -->
+        <div class="main mt-5" style="display:none;">
+            <div class="left">
+                <!-- Left Column -->
+                <div class="profile-img">
+                    <img src="https://assets.devfolio.co/users/ab7a2607d698457b8494d77f0f3f614a/avatar.jpeg" id="profileImage" width="200" height="200">
+                </div>
+                <div class="box1">
+                    <!-- Contact Information -->
+                    <div class="heading">
+                        <p>CONTACT</p>
+                    </div>
+                    <p class="p1"><i class="material-icons icons1">call</i> <span id="contactNumber">+91915645632</span></p>
+                    <p class="p1"><i class="material-icons icons1">email</i> <span id="contactEmail">arifa2002@gmail.com</span></p>
+                    <p class="p1"><i class="material-icons icons1">link</i> <span id="githubProfile">https://github.com</span></p>
+                    <p class="p1"><i class="material-icons icons1">business</i> <span id="linkedinProfile">https://linkedin.com</span></p>
+                </div>
+                <div class="box1">
+                    <!-- Soft Skills -->
+                    <div class="heading">
+                        <p>SOFT SKILLS</p>
+                    </div>
+                    <ul id="softskillsListRight"></ul>
+                </div>
+                <div class="box1">
+                    <!-- Skills -->
+                    <div class="heading">
+                        <p>SKILLS</p>
+                    </div>
+                    <ul id="skillsListRight"></ul>
+                </div>
+                <div class="box1">
+                    <!-- Hobbies -->
+                    <div class="heading">
+                        <p>HOBBIES</p>
+                    </div>
+                    <ul class="h-div" id="hobbiesListRight"></ul>
+                </div>
+            </div>
+            <div class="right">
+                <!-- Right Column -->
+                <div class="name-div">
+                    <h1 id="fullName">Shumbul Arifa</h1>
+                    <p id="profession">Student</p>
+                </div>
+                <div class="box-2">
+                  
+<!-- ABOUT ME section -->
+                    <h2 style="font-size: 18px;">ABOUT ME <i class="material-icons icons3" style="font-size:18px">perm_identity</i></h2>
+                    <div class="p2" id="aboutMeText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</div>
+                </div>
+                <div class="box-2">
+                    <!-- Education section -->
+                    <h2 style="font-size: 18px;">EDUCATION <i class="material-icons icons3" style="font-size:18px">school</i></h2>
+                    <ul id="educationListRight"></ul>
+                </div>
+                <div class="box-2">
+                    <!-- Projects section -->
+                    <h2 style="font-size: 18px;">PROJECTS <i class="material-icons icons3" style="font-size:18px">work</i></h2>
+                    <ul id="projectsListRight"></ul>
+                </div>
+                <div class="box-2">
+                    <!-- Certifications section -->
+                    <h2 style="font-size: 18px;">CERTIFICATIONS <i class="material-icons icons3" style="font-size:18px">card_membership</i></h2>
+                    <ul id="certificationsListRight"></ul>
+                </div>
+                <div class="box-2">
+                    <!-- Achievements section -->
+                    <h2 style="font-size: 18px;">ACHIEVEMENTS <i class="material-icons icons3" style="font-size:18px">emoji_events</i></h2>
+                    <ul id="achievementsListRight"></ul>
+                </div>
+                 <!-- Print CV button -->
+                  
+                  <div class="text-center mt-4">
+                   
+                    <button type="button" class="btn btn-primary" onclick="printCV()">Print CV</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="mail.js"></script>
+</body>
+</html>
+	
+
+	

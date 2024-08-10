@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     
@@ -7,14 +8,32 @@ body {
     max-width: 800px;
 }
 
-.main {
-    display: flex;
-    justify-content: space-between;
+
+.left {
+    background-color: #f7f7f7;
+    width: 45%; /* Adjust width as needed */
+    padding: 10px;
+    
+}
+
+.right {
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    overflow: hidden;
-    flex-direction: row-reverse; /* Align .right to the right */
+    width: 65%; /* Adjust width as needed */
+    padding: 10px;
+    
+}
+.left, .right {
+    display: inline-block;
+    vertical-align: top; /* Align elements to the top */
+    width: calc(50% - 10px); /* Adjust width as needed */
+    margin-right: 20px; /* Adjust margin between elements */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-column-gap: 5px; /* Adjust gap between columns as needed */
 }
 .left, .right {
     padding: 20px;
@@ -37,9 +56,9 @@ body {
 }
 .profile-img
 {
-    width:150px;
-    height:150px;
-    border-radius:50%;
+    width:200px;
+    height:200px;
+    border-radius:100%;
     overflow:hidden;
     margin-bottom:20px;
 
@@ -77,6 +96,7 @@ border:5px solid #ffff ;
 
 .box1 p.p1 {
     margin: 10px 0;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
@@ -85,9 +105,7 @@ border:5px solid #ffff ;
     margin-right: 10px;
 }
 
-.box-2 {
-    margin-bottom: 20px;
-}
+
 
 .box-2 h2 {
     background-color:#4d4d4d;
@@ -108,10 +126,7 @@ border:5px solid #ffff ;
 .h-div li i {
     margin-right: 10px;
 }
-.right {
-    /* Ensure this container has enough padding or margin */
-    padding-bottom: 50px; /* Adjust as needed */
-}
+
 
 .name-div {
     margin-bottom: 10px; /* Increase space under name-div */
@@ -120,35 +135,46 @@ border:5px solid #ffff ;
 #softskillsListRight,
 #skillsListRight,
 #hobbiesListRight {
-    margin-top: 60px; /* Increase space above each list */
+    margin-top: 20px; /* Increase space above each list */
+    
 }
 
 .box-2 {
-    margin-bottom: 45px; /* Adjust as needed */
-    padding-bottom: 45px; /* Adjust as needed */
+    margin-bottom: 55px; /* Adjust as needed */
+    padding-bottom: 30px; /* Adjust as needed */
     border-bottom: 2px solid #ccc; /* Optional: Adds a bottom border */
 }
-
+.box-2 h2 {
+    background-color: #4d4d4d;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    margin-bottom: 10px; /* Adjusted margin-bottom */
+}
 .box1 .p1, .box-2 .p2, .box-2 ul {
     font-size: 14px; /* Adjust font size for text content */
     line-height: 1.6; /* Adjust line height for better readability */
 }
-form-group {
-    background-color: #f0f0f0; /* Light grey color */
 
-}
+
 .form-group {
-    background-color: #e0e0e0; /* Light grey color */
-    padding: 15px; /* Add padding for spacing */
-    margin-bottom: 15px; /* Add margin to separate form groups */
-    border-radius: 5px; /* Optional: Rounded corners for a softer look */
+    background-color: #e0e0e0;
+    padding: 10px; /* Adjust padding as needed */
+    margin-bottom: 15px;
+    border-radius: 5px;
 }
-/* styles.css */
 
-
-
-.btn-primary {
-    /* Style for the Print CV button */
-    margin-top: 20px; /* Adjust margin as needed */
+/* Adjust input field within form-group */
+.form-group input {
+    padding: 8px; /* Adjust padding inside input field */
+    width: 100%; /* Ensure input field takes full width */
+    box-sizing: border-box; /* Include padding in width */
+}
+.main {
+    /* Add your styling here */
+    display: none; /* Initially hidden */
+}
+#cv-template {
+    display: none;
 }
 
